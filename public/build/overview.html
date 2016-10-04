@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Customer Satisfaction Prediction</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.css">
+  </head>
+
+  <body class="base-color4">
+		<nav class="navbar navbar-default navbar-fixed-top lower-nav base-color2 no-border shadowed" role="navigation">
+      <div class="container wide-container">
+        <div class="navbar-header">
+          <p id="application-name" class="navbar-brand">Customer Satisfaction Prediction</p>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+          <ul class="nav navbar-nav">
+            <li>
+              <a class="button-color nav-text" href="/">Application</a>
+            </li>
+            <li>
+              <a class="button-color nav-text" href="overview.html">Overview</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+		<nav class="navbar navbar-default navbar-fixed-top small-nav base-color no-border shadowed" role="navigation">
+			<div class="container wide-container">
+				<div class="navbar-collapse collapse small-nav" id="navbar-main">
+          <ul class="nav navbar-nav small-nav">
+            <li>
+							<a href="https://new-console.ng.bluemix.net/" class="h5 button-color" target="_blank">
+								<img src="images/bluemix_icon.png" class="inline-icon">
+								IBM Bluemix
+							</a>
+            </li>
+						<li>
+							<a href="https://console.ng.bluemix.net/docs/#services/PredictiveModeling/index.html" class="h5 button-color" target="_blank">
+								<img src="images/pa_icon.png" class="inline-icon">
+								Predictive Analytics
+							</a>
+						</li>
+          </ul>
+        </div>
+			</div>
+		</nav>
+
+    <div class="container wide-container">
+      <div class="small-nav"></div>
+			<div class="page-header"></div>
+      <div class="well base-color2">
+				<h3>Documentation</h3>
+        <hr />
+        Github link: <a href="https://github.com/pmservice/customer-satisfaction-prediction" target="_blank">https://github.com/pmservice/customer-satisfaction-prediction</a>
+        <hr />
+        <h4>This sample application shows how to easily score csv data using SPSS Modeler stream in Bluemix.</h4>
+        <h4>Within sample scoring application you are able to:</h4>
+        <ul>
+          <li>select one of stream uploaded to Predictive Analytics on Bluemix</li>
+          <li>specify which source node should be used as scoring input (the application automatically provides information about required input data schema (fields name and type))</li>
+           <a href="images/model_selection.png"><img src="images/model_selection.png" alt="Model selection screen" width="100%"></a>
+          <li>using the Input data drop box you can easily either drag and drop csv file with input data for scoring (or double click on input data field to open file browser)</li>
+          <li>call Predictive Analytics service scoring API using „Perform Calculations” button</li>
+          <li>display scoring result in form of table</li>
+            <a href="images/scoring_result.png"><img src="images/scoring_result.png" alt="Model selection screen" width="100%"></a>
+        </ul>
+    </div>
+
+	</div>
+
+	<script src="bundle.js" type="text/javascript"></script>
+  </body>
+
+</html>

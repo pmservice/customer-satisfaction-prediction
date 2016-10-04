@@ -1,0 +1,3 @@
+applications:
+- name:    customer-satisfaction-prediction
+  memory:  256M
