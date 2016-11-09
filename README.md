@@ -23,7 +23,7 @@ With this sample scoring application, you can:
 # Requirements
 * [IBM ID](https://www.ibm.com/account/profile/us?page=reg) to log in to [Bluemix][bm]. See [free trial](http://www.ibm.com/developerworks/cloud/library/cl-bluemix-fundamentals-start-your-free-trial/index.html) if you don't yet have an ID.
 * [Cloud Foundry command line interface](https://github.com/cloudfoundry/cli/releases) (only if you want to manually deploy to Bluemix)
-* [IBM SPSS Modeler](http://ibm.com/tryspss) (only if you want to modify streams or create new ones; see [SPSS Modeler stream preparation](#spss-modeler-stream-preparation) for details)
+* [IBM SPSS Modeler](http://ibm.com/tryspss) (only if you want to modify streams or create new ones; see [Preparing the SPSS Modeler stream](#spss-modeler-stream-preparation) for details)
 * [Node.js](https://nodejs.org) runtime (only if you want to modify the source code)
 
 ### Preparing the Bluemix ecosystem
