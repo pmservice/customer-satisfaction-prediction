@@ -4,7 +4,7 @@
 [pa-api]: https://console.ng.bluemix.net/docs/services/PredictiveModeling/index-gentopic1.html#pm_service_api
 
 # About
-This sample application demonstrates the [IBM Watson Machine Learning][ml] [Bluemix][bm] offering. It's an extension of the Big Data University [Predicting Customer Satisfaction course](https://courses.bigdatauniversity.com/courses/course-v1%3ABigDataUniversity%2BPA0103EN%2B2016/). While participation in the course is recommended, it is not required.
+This sample application demonstrates the [IBM Watson Machine Learning][ml] [Bluemix][bm] offering. It's an extension of the Big Data University [Predicting Customer Satisfaction course](https://courses.bigdatauniversity.com/courses/course-v1%3ABigDataUniversity%2BPA0103EN%2B2016/). While participation in the course is recommended, it's not required.
 
 This application is based on Node.js and Express framework. It uses the [Watson Machine Learning service API](https://console.ng.bluemix.net/docs/services/PredictiveModeling/index-gentopic1.html#pm_service_api) to integrate with IBM SPSS Modeler analytics.
 
