@@ -23,9 +23,11 @@ var log4js = require('../app/utils/log4js-logger-util');
 var logger = log4js.getLogger('server/pm_client');
 
 var PMClient = module.exports = function (pmService) {
-  this.pmService = pmService;
   if (pmService) {
-    this.credentials = pmService.credentials;
+    let {url, access_key} = pmService.credentials;
+    let v1Url = '/pm/v1';
+    this.url = url.includes(v1Url) ? url : url + v1Url;
+    this.access_key = access_key;
   }
 };
 
@@ -86,8 +88,8 @@ PMClient.prototype = {
 
   getModel: function (contextId, callback) {
     logger.enter('getModel()', contextId);
-    var modelUri = this.credentials.url + '/metadata/' + contextId +
-      '?accesskey="' + this.credentials.access_key + '"';
+    var modelUri = this.url + '/metadata/' + contextId +
+      '?accesskey="' + this.access_key + '"';
     request.get(modelUri, function (error, response, body) {
       if (!error && response.statusCode === 200) {
         var metadata = JSON.parse(body);
@@ -125,11 +127,11 @@ PMClient.prototype = {
   getScore: function (contextId, scoreParam, callback) {
     logger.enter('getScore()',
           'contextId: ' + contextId + ', scoreParam: ' + scoreParam);
-    var scoreUri = this.credentials.url + '/score/' + contextId +
-      '?accesskey="' + this.credentials.access_key + '"';
+    var scoreUri = this.url + '/score/' + contextId +
+      '?accesskey="' + this.access_key + '"';
     var body = JSON.stringify(scoreParam);
     logger.debug('getScore()', 'contextId=' + contextId +
-      ', url: ' + this.credentials.url + '/score/' + contextId + '?accesskey=xxx');
+      ', url: ' + this.url + '/score/' + contextId + '?accesskey=xxx');
     logger.debug('getScore()',
           'contextId=' + contextId + ', body: ' + body);
     request.post({
@@ -166,12 +168,12 @@ with contextId=' + contextId + ', msg: ' + error);
   getModels: function (callback) {
     logger.enter('getModels()');
     var client = this;
-    if (!this.credentials) {
+    if (!this.access_key) {
       logger.info('getModels()', 'Using FAKE_MODELS');
       return callback(null, FAKE_MODELS);
     } else {
-      var modelsUri = this.credentials.url + '/model/' + '?accesskey="' +
-        this.credentials.access_key + '"';
+      var modelsUri = this.url + '/model/' + '?accesskey="' +
+        this.access_key + '"';
       request.get(modelsUri, function (error, response, body) {
         if (!error && response.statusCode === 200) {
           let models = JSON.parse(body);

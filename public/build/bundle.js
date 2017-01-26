@@ -12100,7 +12100,7 @@
 	    var reader = new FileReader();
 	    var file = files[0];
 	    reader.onload = function (evt) {
-	      var isCsv = arguments.length <= 1 || arguments[1] === undefined ? file.name.endsWith('.csv') : arguments[1];
+	      var isCsv = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : file.name.endsWith('.csv');
 	
 	      var inputs = evt.target.result;
 	      // for .csv files remove the header (first line)
@@ -12320,7 +12320,7 @@
 	      React.createElement(
 	        'a',
 	        { href: '#', className: 'close', onClick: this.clear, 'data-dismiss': 'alert', 'aria-label': 'close' },
-	        '×'
+	        '\xD7'
 	      ),
 	      React.createElement(
 	        'strong',
@@ -32438,12 +32438,14 @@
 
 	var map = {
 		"./images/bluemix_icon.png": 270,
-		"./images/model_selection.png": 271,
-		"./images/pa_icon.png": 272,
-		"./images/scoring_result.png": 273,
-		"./images/upload.svg": 274,
-		"./index.html": 275,
-		"./overview.html": 276
+		"./images/ml_icon.png": 271,
+		"./images/ml_icon_gray.png": 272,
+		"./images/model_selection.png": 273,
+		"./images/pa_icon.png": 274,
+		"./images/scoring_result.png": 275,
+		"./images/upload.svg": 276,
+		"./index.html": 277,
+		"./overview.html": 278
 	};
 	function webpackContext(req) {
 		return __webpack_require__(webpackContextResolve(req));
@@ -32469,34 +32471,46 @@
 /* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "images/model_selection.png";
+	module.exports = __webpack_require__.p + "images/ml_icon.png";
 
 /***/ },
 /* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "images/pa_icon.png";
+	module.exports = __webpack_require__.p + "images/ml_icon_gray.png";
 
 /***/ },
 /* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "images/scoring_result.png";
+	module.exports = __webpack_require__.p + "images/model_selection.png";
 
 /***/ },
 /* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "images/upload.svg";
+	module.exports = __webpack_require__.p + "images/pa_icon.png";
 
 /***/ },
 /* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__.p + "index.html";
+	module.exports = __webpack_require__.p + "images/scoring_result.png";
 
 /***/ },
 /* 276 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "images/upload.svg";
+
+/***/ },
+/* 277 */
+/***/ function(module, exports, __webpack_require__) {
+
+	module.exports = __webpack_require__.p + "index.html";
+
+/***/ },
+/* 278 */
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = __webpack_require__.p + "overview.html";

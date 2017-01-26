@@ -22,7 +22,7 @@
   },
   "repository": {},
   "engines": {
-    "node": "4.2.x"
+    "node": "6.9.x"
   },
   "devDependencies": {
     "babel-core": "^6.7.6",
