@@ -29,7 +29,9 @@ envRouter.get('/models', function (req, res) {
   var pmEnv = req.app.get('pm service env');
   var pmClient = new PMClient(pmEnv);
   pmClient.getModels(function (err, models) {
-    if (err) throw err;
+    if (err) {
+      res.status(500).json({error: err.message});
+    }
     res.json(models);
   });
 });

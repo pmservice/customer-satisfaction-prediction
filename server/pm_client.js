@@ -177,6 +177,11 @@ with contextId=' + contextId + ', msg: ' + error);
       request.get(modelsUri, function (error, response, body) {
         if (!error && response.statusCode === 200) {
           let models = JSON.parse(body);
+          if (models.flag === false) {
+            logger.error('getModels() error ' + models.message);
+            return callback(new Error('PA service error: ' + models.message));
+          }
+
           logger.debug(`There are ${models.length} models uploaded`);
           let modelsData = models.map((model) => {
             return new Promise((resolve, reject) => {
@@ -190,6 +195,7 @@ with contextId=' + contextId + ', msg: ' + error);
               });
             });
           });
+
           Promise.all(modelsData)
           .then(() => {
             logger.return('getModels()');
