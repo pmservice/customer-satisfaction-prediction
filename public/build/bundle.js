@@ -12152,6 +12152,12 @@
 	var ScoreTable = React.createClass({
 	  displayName: 'ScoreTable',
 	
+	  getInitialState: function getInitialState() {
+	    return {
+	      hideColumns: true
+	    };
+	  },
+	
 	  componentDidMount: function componentDidMount() {
 	    window.onresize = function () {
 	      this._scoreTableAdjustment();
@@ -12164,9 +12170,41 @@
 	  },
 	
 	  render: function render() {
+	    var _this3 = this;
+	
+	    var ctx = this;
 	    var propsData = JSON.parse(this.props.data);
-	    var data = propsData.data;
-	    var header = propsData.header;
+	    var data = propsData.data,
+	        header = propsData.header;
+	
+	    var showHideButtons = void 0;
+	    if (this.props.hideableColumns) {
+	      if (this.state.hideColumns) {
+	        data = data.map(function (row) {
+	          return row.filter(function (e, i) {
+	            return !_this3.props.hideableColumns.includes(i);
+	          });
+	        });
+	        header = header.filter(function (e, i) {
+	          return !_this3.props.hideableColumns.includes(i);
+	        });
+	      }
+	      showHideButtons = React.createElement(
+	        'div',
+	        null,
+	        this.props.hideableColumns.map(function (i) {
+	          return React.createElement(
+	            'button',
+	            { className: 'btn btn-primary', onClick: function onClick() {
+	                ctx.setState({ hideColumns: !ctx.state.hideColumns });
+	              } },
+	            ctx.state.hideColumns ? 'Show' : 'Hide',
+	            ' ',
+	            propsData.header[i]
+	          );
+	        })
+	      );
+	    }
 	    return React.createElement(
 	      'div',
 	      null,
@@ -12175,6 +12213,7 @@
 	        { className: 'control-label', htmlFor: 'focusedInput' },
 	        'Output data'
 	      ),
+	      showHideButtons,
 	      React.createElement(
 	        'div',
 	        { id: 'scoreDiv', className: 'ioTextStyle' },
@@ -12263,7 +12302,11 @@
 	      mainLoader.setState({
 	        loadingVisible: false
 	      });
-	      ReactDOM.render(React.createElement(ScoreTable, { data: JSON.stringify(response[0]) }), document.getElementById('scoringCntn'));
+	      var data = JSON.stringify(response[0]);
+	      var hideableColumns = response[0].header.findIndex(function (e) {
+	        return e === 'Churn' || e === 'Actual Churn';
+	      });
+	      ReactDOM.render(React.createElement(ScoreTable, { data: JSON.stringify(response[0]), hideableColumns: [hideableColumns] }), document.getElementById('scoringCntn'));
 	    }).fail(function (jqXHR, textStatus, errorThrown) {
 	      mainLoader.setState({
 	        loadingVisible: false

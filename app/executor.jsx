@@ -265,6 +265,12 @@ var Input = React.createClass({
 });
 
 var ScoreTable = React.createClass({
+  getInitialState: function () {
+    return {
+      hideColumns: true
+    };
+  },
+
   componentDidMount: function () {
     window.onresize = function () {
       this._scoreTableAdjustment();
@@ -277,12 +283,27 @@ var ScoreTable = React.createClass({
   },
 
   render: function () {
+    let ctx = this;
     let propsData = JSON.parse(this.props.data);
-    let data = propsData.data;
-    let header = propsData.header;
+    let {data, header} = propsData;
+    let showHideButtons;
+    if (this.props.hideableColumns) {
+      if (this.state.hideColumns) {
+        data = data.map((row) => row.filter((e, i) => !this.props.hideableColumns.includes(i)));
+        header = header.filter((e, i) => !this.props.hideableColumns.includes(i));
+      }
+      showHideButtons = (
+        <div>
+          {this.props.hideableColumns.map(i =>
+            <button className='btn btn-primary' onClick={() => { ctx.setState({hideColumns: !ctx.state.hideColumns}) }}>{ctx.state.hideColumns ? 'Show' : 'Hide'} {propsData.header[i]}</button>
+          )}
+        </div>
+      );
+    }
     return (
       <div>
         <label className="control-label" htmlFor="focusedInput">Output data</label>
+        {showHideButtons}
         <div id="scoreDiv" className="ioTextStyle">
           <table id="scoreTable" className="table table-bordered light-color2">
             <thead>
@@ -351,8 +372,12 @@ var RunButton = React.createClass({
       mainLoader.setState({
         loadingVisible: false
       });
+      let data = JSON.stringify(response[0]);
+      let hideableColumns = response[0].header.findIndex((e) => {
+        return (e === 'Churn' || e === 'Actual Churn')
+      });
       ReactDOM.render(
-        <ScoreTable data={JSON.stringify(response[0])} />,
+        <ScoreTable data={JSON.stringify(response[0])} hideableColumns={[hideableColumns]}/>,
         document.getElementById('scoringCntn')
       );
     })
