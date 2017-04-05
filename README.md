@@ -1,12 +1,12 @@
 [ml]: https://console.ng.bluemix.net/catalog/services/ibm-watson-machine-learning/  "ML"
 [bm]: https://console.ng.bluemix.net/
 [general]: https://github.com/pmservice/drug-selection/blob/master/documentation/IBM%20Watson%20Machine%20Learning%20for%20Bluemix%20-%20General.pdf
-[pa-api]: https://console.ng.bluemix.net/docs/services/PredictiveModeling/index-gentopic1.html#pm_service_api
+[pa-api]: https://console.ng.bluemix.net/docs/services/PredictiveModeling/pm_service_api_spss.html
 
 # About
 This sample application demonstrates the [IBM Watson Machine Learning][ml] [Bluemix][bm] offering. It's an extension of the Big Data University [Predicting Customer Satisfaction course](https://courses.bigdatauniversity.com/courses/course-v1%3ABigDataUniversity%2BPA0103EN%2B2016/). While participation in the course is recommended, it's not required.
 
-This application is based on the Node.js and Express framework. It uses the [Watson Machine Learning service API](https://console.ng.bluemix.net/docs/services/PredictiveModeling/index-gentopic1.html#pm_service_api) to integrate with IBM SPSS Modeler analytics.
+This application is based on the Node.js and Express framework. It uses the [Machine Learning service API for IBM SPSS Modeler models][pa-api] to integrate with IBM SPSS Modeler analytics.
 
 With this sample scoring application, you can:
 
@@ -14,7 +14,7 @@ With this sample scoring application, you can:
 * Specify which source node should be used as the scoring input
 * Verify the required input data schema (field name and type)
 * Drag-and-drop a *csv* file that contains input data for scoring (or double-click an input data field to open the file browser)
-* Click the **Perform Calculations** button to call the *Watson Machine Learning* service scoring API
+* Click the **Get Score** button to call the *Watson Machine Learning* service scoring API
 * Display the scoring results table
 
 ![Application screenshot](/doc/app-scr.png)
