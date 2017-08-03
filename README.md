@@ -36,7 +36,7 @@ The general, high-level steps are described below. Refer to [IBM Watson Machine 
 # Deploying the prebuilt app
 For a fast start, you can deploy the prebuilt app to Bluemix by clicking the following button:
 
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/pmservice/customer-satisfaction-prediction)
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/pmservice/customer-satisfaction-prediction&appName=customer-satisfaction&branch=master)
 
 Note that the application is fully functional only if bound to an instance of the *Watson Machine Learning* service, which must be done manually. See [instructions](#binding-services-in-bluemix).
 
